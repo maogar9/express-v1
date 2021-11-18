@@ -1,7 +1,20 @@
 const express = require('express')
 const rutass = require('./app/rutas/user')
+const db = require('./config/db')
 const app = express() // contiene nuestra app - hace el instanciaminento de express
 const port = 5001 // puerto por donde corre mi app
+
+app.use(
+    express.json({
+        limit: '20mb'
+    })
+)
+
+app.use(
+    express.urlencoded({
+        limit: '20mb'
+    })
+)
 
 app.use(rutass)
 //app.get('/', (req,res) =>{ //cuando mi app sea llamada por get y ruta raiz "/" ejecuta esto:
@@ -12,3 +25,4 @@ app.listen(port, () =>{ //estoy indicando que corre por el puerto 5001 y que cua
     console.log('app esta ok');
 })
 
+db();

@@ -15,4 +15,6 @@ ruta.get(
 }
 )
 
+ruta.post(`/${path}`, controlador.insertData)
+
 module.exports= ruta
